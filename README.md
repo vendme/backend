@@ -1,2 +1,1 @@
-# backend
-Node API for vendme app
+// Notes for backend for Vendme
