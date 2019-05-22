@@ -1,4 +1,4 @@
-const db = require('../../dbConfig')
+const db = require('../dbConfig')
 module.exports = {
   getMarkets,
   getMarketById,
@@ -25,7 +25,7 @@ function getMarkets() {
     .from('markets')
 }
 
-function getMarketById() {
+function getMarketById(id) {
   return db
     .select(
       'id',
