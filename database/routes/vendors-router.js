@@ -1,11 +1,11 @@
 const router = require('express').Router()
 const jwt = require('jsonwebtoken')
-const Markets = require('../helpers/marketsHelper')
+const Vendors = require('../helpers/vendorsHelper')
 
 router.get('/', async (req, res) => {
   try {
-    const markets = await Markets.getMarkets()
-    res.status(200).json(markets)
+    const vendor = await Vendors.getVendors()
+    res.status(200).json(vendor)
   } catch (error) {
     res.status(500).json({ error })
   }
@@ -13,13 +13,13 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   const { id } = req.params
   try {
-    const market = await Markets.getMarketById(id)
-    market
-      ? res.status(200).json(market)
-      : res.status(404).json({ error: 'Market is not found' })
+    const vendor = await Vendors.getVendorsById(id)
+    vendor
+      ? res.status(200).json(vendor)
+      : res.status(404).json({ error: 'Vendor is not found' })
   } catch (error) {
     res.status(500).json({ error })
   }
 })
-//router.get('/:id', async (req, res) => {})
+
 module.exports = router
