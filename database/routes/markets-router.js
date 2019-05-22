@@ -21,5 +21,5 @@ router.get('/:id', async (req, res) => {
     res.status(500).json({ error })
   }
 })
-
+router.get('/:id', async (req, res) => {})
 module.exports = router
