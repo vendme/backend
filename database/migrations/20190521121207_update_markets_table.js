@@ -17,7 +17,6 @@ exports.up = function(knex, Promise) {
 			.integer('days_open')
 			.references('id')
 			.inTable('days');
-
 		//FK
 		tbl
 			.integer('hours_of_operation')
