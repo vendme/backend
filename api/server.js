@@ -4,8 +4,9 @@ const cors = require("cors");
 const session = require('express-session');
 const KnexSessionStore = require('connect-session-knex')(session)
 const passport = require('passport');
-require('../auth/passport-setup');
+require('../config/passport-setup');
 require('dotenv').config();
+const sessionOptions = require('../config/session-options');
 
 const authRouter = require('../auth/auth-router.js');
 const usersRouter = require('../database/routes/users-router.js');
@@ -14,6 +15,9 @@ const marketRouter = require('../database/routes/markets-router.js');
 
 const server = express();
 
+server.use(session(sessionOptions));
+server.use(passport.initialize());
+server.use(passport.session());
 server.use(express.json());
 server.use(helmet());
 server.use(cors());
