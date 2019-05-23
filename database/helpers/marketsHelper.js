@@ -1,4 +1,4 @@
-const db = require('../../dbConfig')
+const db = require('../dbConfig')
 module.exports = {
   getMarkets,
   getMarketById,
@@ -8,39 +8,11 @@ module.exports = {
 }
 
 function getMarkets() {
-  return db
-    .select(
-      'id',
-      'market_name',
-      'address',
-      'city',
-      'state',
-      'zip_code',
-      'phone_num',
-      'days_of_week',
-      'hours_of_op',
-      'bio',
-      'blueprint_file'
-    )
-    .from('markets')
+  return db ('markets')
 }
 
-function getMarketById() {
-  return db
-    .select(
-      'id',
-      'market_name',
-      'address',
-      'city',
-      'state',
-      'zip_code',
-      'phone_num',
-      'days_of_week',
-      'hours_of_op',
-      'bio',
-      'blueprint_file'
-    )
-    .from('markets')
+function getMarketById(id) {
+  return db('markets')
     .where({ id })
     .first()
 }
