@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const sessionOptions = {
     name: 'vendme',
     secret: process.env.COOKIE_KEY,

@@ -19,6 +19,7 @@ passport.deserializeUser(async (id, done) => {
     console.log(error)
   }
 })
+
 passport.use(
   new GoogleStrategy(
     {
