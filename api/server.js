@@ -43,7 +43,7 @@ server.use(cors())
 server.use('/api/users', usersRouter)
 server.use('/api/vendor', vendorRouter)
 server.use('/api/market', marketRouter)
-server.use('/', authRouter)
+server.use('/auth', authRouter)
 
 server.get('/', (req, res) => {
   res.send('I am the Vendme backend server. Up and running!')

@@ -1,8 +1,7 @@
 const passport = require('passport')
 const GoogleStrategy = require('passport-google-oauth20')
 require('dotenv').config()
-const Users = require('../database/helpers/usersHelper');
-
+const Users = require('../database/helpers/usersHelper')
 
 passport.serializeUser((user, done) => {
   try {
@@ -35,8 +34,8 @@ passport.use(
       // add user
       if (!exists) {
         const result = await Users.add({
-          google_id: id,  // I have to add this field to the users table?
-          username: displayName,
+          google_id: id, // I have to add this field to the users table?
+          username: displayName
         })
         exists = await Users.findByGoogleId(id)
         console.log('new user created: ' + JSON.stringify(exists))
