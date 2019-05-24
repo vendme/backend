@@ -6,7 +6,6 @@ const KnexSessionStore = require('connect-session-knex')(session)
 const passport = require('passport');
 require('../config/passport-setup');
 require('dotenv').config();
-const sessionOptions = require('../config/session-options');
 
 const authRouter = require('../auth/auth-router.js');
 const usersRouter = require('../database/routes/users-router.js');
@@ -14,6 +13,25 @@ const vendorRouter = require('../database/routes/vendors-router.js');
 const marketRouter = require('../database/routes/markets-router.js');
 
 const server = express();
+
+const sessionOptions = {
+  name: 'vendme',
+  secret: process.env.COOKIE_KEY,
+  cookie: {
+      maxAge: 1000 * 60 * 60, // 1 hour
+      secure: false
+  },
+  httpOnly: true,
+  resave: false,
+  saveUninitialized: false,
+  store: new KnexSessionStore({
+      knex: require('../database/dbConfig'),
+      tablename: 'sessions',
+      sidfieldname: 'sid',
+      createtable: true,
+      clearInterval: 1000 * 60 * 60 // hour
+  })
+}
 
 server.use(session(sessionOptions));
 server.use(passport.initialize());
