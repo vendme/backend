@@ -7,22 +7,26 @@ exports.up = function(knex, Promise) {
 		tbl
 			.integer('market_id')
 			.references('id')
-			.inTable('markets');
+			.inTable('markets')
+			.onDelete('CASCADE');
 
 		tbl
 			.integer('vendor_id')
 			.references('id')
-			.inTable('vendors');
+			.inTable('vendors')
+			.onDelete('CASCADE');
 
 		tbl
 			.integer('category_id')
 			.references('id')
-			.inTable('categories');
+			.inTable('categories')
+			.onDelete('CASCADE');
 
 		tbl
 			.integer('stall_size')
 			.references('id')
-			.inTable('stall_sizes');
+			.inTable('stall_sizes')
+			.onDelete('CASCADE');
 
 		tbl.boolean('availability');
 
