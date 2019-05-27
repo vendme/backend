@@ -4,9 +4,13 @@ module.exports = {
   getMarketById,
   addMarket,
   editMarket,
-  deleteMarket
+  deleteMarket,
+  getStallsByMarketId
 }
-
+function getStallsByMarketId(market_id) {
+  return db('stalls')
+    .where({ market_id })
+}
 function getMarkets() {
   return db ('markets')
 }
