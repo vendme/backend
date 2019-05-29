@@ -10,6 +10,7 @@ router.get('/', async (req, res) => {
     res.status(500).json({ error })
   }
 })
+
 router.get('/:id', async (req, res) => {
   const { id } = req.params
   try {
@@ -19,6 +20,18 @@ router.get('/:id', async (req, res) => {
       : res.status(404).json({ error: 'Vendor is not found' })
   } catch (error) {
     res.status(507).json({ error })
+  }
+})
+
+router.post('/', async (req, res) => {
+  try {
+    const vendor = await Vendors.addVendor(req.body);
+    res.status(201).json(vendor);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: 'Error adding the vendor',
+    });
   }
 })
 
