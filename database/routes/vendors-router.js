@@ -47,7 +47,7 @@ router.delete('/:id', async (req, res) => {
     // log error to database
     console.log(error);
     res.status(500).json({
-      message: 'Error removing the hub',
+      message: 'Error removing the vendor',
     });
   }
 })
