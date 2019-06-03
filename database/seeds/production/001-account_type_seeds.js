@@ -1,13 +1,13 @@
-
 exports.seed = function(knex, Promise) {
-  // Deletes ALL existing entries
-  return knex('table_name').del()
-    .then(function () {
-      // Inserts seed entries
-      return knex('table_name').insert([
-        {id: 1, colName: 'rowValue1'},
-        {id: 2, colName: 'rowValue2'},
-        {id: 3, colName: 'rowValue3'}
-      ]);
-    });
+	// Deletes ALL existing entries
+	return knex('account_types')
+		.del()
+		.then(function() {
+			// Inserts seed entries
+			return knex('account_types').insert([
+				{ id: 1, accounts: 'market' },
+				{ id: 2, accounts: 'vendor' },
+				{ id: 3, accounts: 'customer' },
+			]);
+		});
 };

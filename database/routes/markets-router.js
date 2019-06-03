@@ -34,7 +34,7 @@ router.get('/:id/stalls', async (req, res) => {
 	}
 });
 
-router.post('/', async (req, res) => {
+/* router.post('/', async (req, res) => {
 	try {
 		const market = await Markets.addMarket(req.body);
 		res.status(201).json(market);
@@ -44,6 +44,6 @@ router.post('/', async (req, res) => {
 			message: 'Error adding market information to the database',
 		});
 	}
-});
+}); */
 //router.get('/:id', async (req, res) => {})
 module.exports = router;
