@@ -1,5 +1,6 @@
 exports.up = function(knex, Promise) {
-	return knex.schema.table('stall_sizes', function(tbl) {
+	return knex.schema.createTable('stall_sizes', function(tbl) {
+		tbl.increments();
 		tbl.integer('quantity');
 		tbl.integer('width');
 
@@ -8,5 +9,5 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-	return knex.schema.dropColumns('increments', 'length', 'width', 'quantity');
+	return knex.schema.dropTableIfExists('stall_sizes');
 };

@@ -8,16 +8,26 @@ exports.up = function(knex, Promise) {
 
 		tbl.string('phone_number', 15).notNullable();
 
-		/*  
 		tbl
-			.int('market_id')
+			.integer('market_id')
 			.references('id')
-			.inTable('markets');
+			.inTable('markets')
+			.onDelete('SET NULL')
+			.onUpdate('SET NULL');
 
 		tbl
-			.int('products')
+			.integer('products')
 			.references('id')
-			.inTable('products'); */
+			.inTable('products')
+			.onDelete('SET NULL')
+			.onUpdate('SET NULL');
+
+		tbl
+			.integer('user_vendor')
+			.references('id')
+			.inTable('users')
+			.onDelete('SET NULL')
+			.onUpdate('SET NULL');
 	});
 };
 

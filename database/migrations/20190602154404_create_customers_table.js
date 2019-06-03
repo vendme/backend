@@ -8,6 +8,11 @@ exports.up = function(knex, Promise) {
 
 		tbl.string('email', 500).notNullable();
 		tbl.string('phone_num', 20).notNullable();
+
+		tbl
+			.integer('user_customer')
+			.references('id')
+			.inTable('users');
 	});
 };
 
