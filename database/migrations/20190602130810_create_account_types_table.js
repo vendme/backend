@@ -3,7 +3,7 @@ exports.up = function(knex, Promise) {
 		tbl.increments();
 
 		tbl
-			.string('accounts', 25)
+			.string('accounts', 15)
 			.notNullable()
 			.unique();
 	});
