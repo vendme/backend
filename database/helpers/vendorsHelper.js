@@ -16,9 +16,16 @@ function getVendorById(id) {
 		.where({ id })
 		.first();
 }
-function addVendor(data, userId) {
+/* function addVendor(data, userId) {
 	return db('vendors').insert({ ...data, market_id: userId }, ['id']);
+} */
+
+function addVendor(vendor) {
+	return db('vendors')
+		.insert(vendor)
+		.returning(['id', 'bio', 'phone_number', 'market_id', 'products']);
 }
+
 /* function editVendor(id, data, userId) {
 	if (userId == id)
 		return db('vendors')
