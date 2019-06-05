@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
     })
     .catch(err => res.send(err));
 });
+
 router.get('/:id', async (req, res) => {
   const { id } = req.params
   try {
