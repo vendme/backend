@@ -19,17 +19,26 @@ function getMarketById(id) {
 		.where({ id })
 		.first();
 }
-function addMarket(data) {
+/* function addMarket(data) {
+	return db('markets').insert(data, ['id']);
+} */
+function addMarket(market) {
 	return db('markets')
-		.insert(data, ['id'])
-		.returning('*');
+		.insert(market)
+		.returning(['id', 'market_name']);
 }
-function editMarket(id, data, userId) {
+
+/* function editMarket(id, data, userId) {
 	if (userId == id)
 		return db('markets')
 			.where({ id })
 			.update({ ...data }, ['id']);
 	else return null;
+} */
+function editMarket(id, data) {
+	return db('markets')
+		.where({ id })
+		.update({ ...data }, ['id']);
 }
 function deleteMarket(id) {
 	return db('markets')

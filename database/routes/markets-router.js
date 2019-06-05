@@ -45,5 +45,22 @@ router.post('/', async (req, res) => {
 		});
 	}
 });
+
+router.put('/:id', async (req, res) => {
+	try {
+		const market = await Markets.editMarket(req.params.id, req.body);
+		if (market) {
+			res.status(200).json(market);
+		} else {
+			res.status(404).json({ message: 'The market could not be found' });
+		}
+	} catch (error) {
+		// log error to database
+		console.log(error);
+		res.status(500).json({
+			message: 'Error updating the market',
+		});
+	}
+});
 //router.get('/:id', async (req, res) => {})
 module.exports = router;
