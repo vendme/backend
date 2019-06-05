@@ -57,7 +57,7 @@ const dbSettings = {
 };
 
 module.exports = {
-	development: dbLocalSettings, //dbSqliteDev,
+	development: dbLocalSettings,
 	production: dbSettings,
 };
 
