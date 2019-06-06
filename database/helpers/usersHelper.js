@@ -5,7 +5,8 @@ module.exports = {
   find,
   findBy,
   findById,
-  findByAccountType
+  findByAccountType,
+  findByGoogleId
 };
 
 function find() {
@@ -27,6 +28,13 @@ function findById(id) {
     .where({ id })
     .first();
 }
+
 function findByAccountType(account_type) {
 	return db('users').where({ account_type });
+}
+
+function findByGoogleId(id) {
+  return db('users')
+    .where({ googleID: id })
+    .first()
 }
