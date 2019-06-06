@@ -36,7 +36,7 @@ router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
   const token = generateToken(req.user)
   if (process.env.NODE_ENV === 'production') {
     res.redirect('http://vendme.herokuapp.com/#/token?=' + token)
-  } else res.redirect('http://localhost:5000/#/token?=' + token)
+  } else res.redirect('http://localhost:9000/#/token?=' + token)
 })
 
 // OLD (regular) LOGIN ENDPOINT
