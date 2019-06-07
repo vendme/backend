@@ -5,7 +5,10 @@ module.exports = {
   find,
   findBy,
   findById,
-  findByAccountType
+  findByAccountType,
+  addUser,
+  editUser,
+  deleteUser
 };
 
 function find() {
@@ -14,6 +17,12 @@ function find() {
 
 function findBy(filter) {
   return db('users').where(filter);
+}
+
+function addUser(user) {
+	return db('users')
+		.insert(user)
+    .returning(['id', 'username']);
 }
 
 async function add(user) {
@@ -29,4 +38,16 @@ function findById(id) {
 }
 function findByAccountType(account_type) {
 	return db('users').where({ account_type });
+}
+
+
+function editUser(id, data) {
+	return db('users')
+		.where({ id })
+		.update({ ...data }, ['id']);
+}
+function deleteUser(id) {
+	return db('users')
+		.where({ id })
+		.del();
 }
