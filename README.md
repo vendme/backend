@@ -20,7 +20,8 @@ vendorRouter - /api/vendor:
  PUT vendor- /:id;
  GET stalls by vendor id - /:id/stalls;
 
-marketRouter - /api/market: GET vendor by id - /:id; 
+marketRouter - /api/market: 
+ GET vendor by id - /:id; 
  GET all markets - /;
  POST market - /; 
  DELETE market - /:id; 
