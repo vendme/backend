@@ -6,7 +6,10 @@ module.exports = {
   findBy,
   findById,
   findByAccountType,
-  findByGoogleId
+  findByGoogleId,
+  addUser,
+  editUser,
+  deleteUser
 };
 
 function find() {
@@ -15,6 +18,12 @@ function find() {
 
 function findBy(filter) {
   return db('users').where(filter);
+}
+
+function addUser(user) {
+	return db('users')
+		.insert(user)
+    .returning(['id', 'username']);
 }
 
 async function add(user) {
@@ -37,4 +46,15 @@ function findByGoogleId(id) {
   return db('users')
     .where({ googleID: id })
     .first()
+}
+
+function editUser(id, data) {
+	return db('users')
+		.where({ id })
+		.update({ ...data }, ['id']);
+}
+function deleteUser(id) {
+	return db('users')
+		.where({ id })
+		.del();
 }

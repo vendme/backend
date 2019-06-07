@@ -31,7 +31,7 @@ router.get(
 )
 
 // callback route for google to redirect to
-router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
+router.get('auth/google/redirect', passport.authenticate('google'), (req, res) => {
   req.session.user = req.user
   const token = generateToken(req.user)
   if (process.env.NODE_ENV === 'production') {
