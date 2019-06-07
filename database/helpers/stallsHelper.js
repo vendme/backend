@@ -5,7 +5,9 @@ module.exports = {
   find,
   findBy,
   findById,
-  
+  editStall,
+  deleteStall,
+  getSizeByVendorId
 };
 
 function find() {
@@ -26,6 +28,20 @@ function findById(id) {
   return db('stalls')
     .where({ id })
     .first();
+}
+function editStall(id, data) {
+	return db('stalls')
+		.where({ id })
+		.update({ ...data }, ['id']);
+}
+function deleteStall(id) {
+	return db('markets')
+		.where({ id })
+		.del();
+}
+function getSizeByVendorId(vendor_id) {
+  return db('stall_sizes')
+    .where({ vendor_id })
 }
 
 
