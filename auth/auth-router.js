@@ -30,13 +30,20 @@ router.get(
   })
 )
 
-// callback route for google to redirect to
+//callback route for google to redirect to
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-  req.session.user = req.user
-  const token = generateToken(req.user)
+  req.session.user = req.user // gives me back my user object I added to the users table with googleID updated
+  const token = generateToken(req.user);
+  console.log('/google/redirect: ', req.user);
   if (process.env.NODE_ENV === 'production') {
     res.redirect('http://vendme.herokuapp.com/#/token?=' + token)
   } else res.redirect('http://localhost:9000/#/token?=' + token)
+})
+
+router.get('logout', (req, res) => {
+  // handle with passport
+  req.logout();
+  res.redirect('/');
 })
 
 // OLD (regular) LOGIN ENDPOINT

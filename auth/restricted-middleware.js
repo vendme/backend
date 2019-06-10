@@ -7,9 +7,10 @@ module.exports = (req, res, next) => {
   if (token) {
     jwt.verify(token, jwtSecret, (err, decodedToken) => {
       if (err) {
-        res.status(401).json({ message: 'NOPE!'});
+        res.status(401).json({ message: 'Restricted endpoint - missing or bad token!'});
       } else {
-        req.decodedJwt = decodedToken; // ask about this
+        req.decodedJwt = decodedToken; // make the token available to the rest of the API
+        console.log('decoded token', req.decodedJwt);
         next();
       }
     })
