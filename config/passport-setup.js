@@ -12,7 +12,7 @@ passport.serializeUser((user, done) => {
 })
 passport.deserializeUser(async (id, done) => {
   try {
-    const user = await Users.findById(id) // does my helper need to return an id?
+    const user = await Users.findById(id)
     done(null, user.id)
   } catch (error) {
     console.log(error)
@@ -26,17 +26,20 @@ passport.use(
       callbackURL: '/auth/google/redirect',
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET
-    },
+    }, 
     async (accessToken, refreshToken, profile, done) => {
-      const { id, displayName, email } = profile
+      const { id, displayName } = profile
       // check if user is already in database
+      console.log(profile)
+      // check if user already exists in the users table
       let exists = await Users.findByGoogleId(id)
       // add user
       if (!exists) {
         const result = await Users.add({
-          google_id: id, 
+          googleID: id, 
           username: displayName,
-          email: email
+          email: 'hey@meathead.com', // email is set to notNullable() 
+          password: 'password' // we don't need this anymore with oauth
         })
         exists = await Users.findByGoogleId(id)
         console.log('new user created: ' + JSON.stringify(exists))
