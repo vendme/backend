@@ -37,7 +37,7 @@ router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
   console.log('/google/redirect: ', req.user);
   if (process.env.NODE_ENV === 'production') {
     res.redirect('https://vendme.netlify.com/#/token?=' + token)
-  } else res.redirect('http://localhost:9000/#/token?=' + token)
+  } else res.redirect('http://localhost:3000/#/token?=' + token)
 })
 
 router.get('/logout', function(req, res){
