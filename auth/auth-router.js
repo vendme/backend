@@ -36,38 +36,39 @@ router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
   const token = generateToken(req.user);
   console.log('/google/redirect: ', req.user);
   if (process.env.NODE_ENV === 'production') {
-    res.redirect('http://vendme.herokuapp.com/#/token?=' + token)
-  } else res.redirect('http://localhost:9000/#/token?=' + token)
+    res.redirect('https://vendme.netlify.com/#/token?=' + token)
+  } else res.redirect('http://localhost:3000/#/token?=' + token)
 })
 
-router.get('logout', (req, res) => {
-  // handle with passport
-  req.logout();
-  res.redirect('/');
-})
+router.get('/logout', function(req, res){
+  console.log('before: ', req.user);
+  req.logout();  // from passport documentation
+  console.log('after', req.user);
+  //res.redirect('/');
+});
 
-// OLD (regular) LOGIN ENDPOINT
-// router.post('/login', (req, res) => {
-//   let { username, password } = req.body;
+// Regular LOGIN ENDPOINT
+router.post('/login', (req, res) => {
+  let { username, password } = req.body;
 
-//   Users.findBy({ username })
-//     .first()
-//     .then(user => {
-//       if (user && bcrypt.compareSync(password, user.password)) {
-//         const token = generateToken(user); 
+  Users.findBy({ username })
+    .first()
+    .then(user => {
+      if (user && bcrypt.compareSync(password, user.password)) {
+        const token = generateToken(user); 
 
-//         res.status(200).json({
-//           message: `Welcome ${user.username}!, have a token...`,
-//           token, 
-//         });
-//       } else {
-//         res.status(401).json({ message: 'Invalid Credentials' });
-//       }
-//     })
-//     .catch(error => {
-//       res.status(500).json(error);
-//     });
-// });
+        res.status(200).json({
+          message: `Welcome ${user.username}!, have a token...`,
+          token, 
+        });
+      } else {
+        res.status(401).json({ message: 'Invalid Credentials' });
+      }
+    })
+    .catch(error => {
+      res.status(500).json(error);
+    });
+});
 
 // TOKEN SERVICE
 function generateToken(user) {
