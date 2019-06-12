@@ -6,6 +6,7 @@ const createFakeVendors = () => {
 	for (let i = 0; i < desiredFakeVendors; i++) {
 		fakeVendors.push({
 			id: i + 1,
+			vendor_name: faker.company.companyName(),
 			bio: faker.lorem.paragraph(),
 			phone_number: faker.phone.phoneNumberFormat(),
 			//city: faker.address.city(),
