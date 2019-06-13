@@ -30,23 +30,25 @@ passport.use(
     async (accessToken, refreshToken, profile, done) => {
       const { id, displayName } = profile;
       // check if user is already in database
-      console.log(profile);
+      console.log('google strategy profile data', profile);
+
       // check if user already exists in the users table
-      let exists = await Users.findByGoogleId(id)
-      // add user
-      if (!exists) {
+      let existsAlready = await Users.findByGoogleId(id);
+      // add user 
+      if (!existsAlready) {
         const result = await Users.add({
           googleID: id, 
           username: displayName,
-          email: 'hey@meathead.com', // email is set to notNullable() 
-          password: 'password'
+          email: 'hey@meathead.com', // not nullable
+          password: 'password' // not nullable
+
         })
-        exists = await Users.findByGoogleId(id)
-        console.log('new user created: ' + JSON.stringify(exists))
-        done(null, exists)
-      } else {
-        console.log(`user is ${JSON.stringify(exists)}`)
-        done(null, exists)
+        newUser = await Users.findByGoogleId(id)
+        console.log('new user created: ' + JSON.stringify(newUser))
+        done(null, newUser)
+      } else { // user already exists
+        console.log(`user exists already and is ${JSON.stringify(existsAlready)}`)
+        done(null, existsAlready)
       }
     }
   )
