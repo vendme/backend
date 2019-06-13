@@ -31,6 +31,7 @@ passport.use(
       const { id, displayName } = profile;
       // check if user is already in database
       console.log('google strategy profile data', profile);
+
       // check if user already exists in the users table
       let existsAlready = await Users.findByGoogleId(id);
       // add user 
@@ -40,6 +41,7 @@ passport.use(
           username: displayName,
           email: 'hey@meathead.com', // not nullable
           password: 'password' // not nullable
+
         })
         newUser = await Users.findByGoogleId(id)
         console.log('new user created: ' + JSON.stringify(newUser))
