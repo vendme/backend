@@ -9,7 +9,7 @@
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
     "express": "^4.17.0",
-    "express-session": "^1.16.1",
+    "express-session": "^1.16.2",
     "faker": "^4.1.0",
     "helmet": "^3.18.0",
     "jsonwebtoken": "^8.5.1",
@@ -17,6 +17,7 @@
     "knex-db-manager": "^0.5.0",
     "knex-migrate": "^1.7.2",
     "passport": "^0.4.0",
+    "passport-facebook": "^3.0.0",
     "passport-google-oauth20": "^2.0.0",
     "pg": "^7.11.0",
     "sqlite3": "^4.0.8"
