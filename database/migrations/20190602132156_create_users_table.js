@@ -12,6 +12,7 @@ exports.up = function(knex) {
 
 		tbl.string('account_type', 128);
 		tbl.text('googleID');
+		tbl.text('facebookId');
 
 		/* tbl
 			.integer('user_vendor')
