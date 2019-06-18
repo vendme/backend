@@ -16,7 +16,7 @@ const createFakeProducts = () => {
 	return fakeProducts;
 };
 
-exports.seed = function(knex, Promis) {
+exports.seed = function(knex, Promise) {
 	return knex('products')
 		.del()
 		.then(function() {

@@ -5,7 +5,7 @@ module.exports = {
 	addVendor,
 	editVendor,
 	deleteVendor,
-	getStallsByVendorId
+	getStallsByVendorId,
 };
 
 function getVendors() {
@@ -21,7 +21,14 @@ function getVendorById(id) {
 function addVendor(vendor) {
 	return db('vendors')
 		.insert(vendor)
-		.returning(['id', 'bio', 'phone_number', 'market_id', 'products']);
+		.returning([
+			'id',
+			'vendor_name',
+			'bio',
+			'phone_number',
+			'market_id',
+			'products',
+		]);
 }
 
 function editVendor(id, data) {
@@ -35,6 +42,5 @@ function deleteVendor(id) {
 		.del();
 }
 function getStallsByVendorId(vendor_id) {
-  return db('stalls')
-    .where({ vendor_id })
+	return db('stalls').where({ vendor_id });
 }
