@@ -29,19 +29,19 @@ const dbLocalSettings = {
 	},
 };
 
-// const dbSqliteDev = {
-//     client: 'sqlite3',
-//     connection: {
-//         filename: './database/vendme.db3',
-//     },
-//     useNullAsDefault: true,
-//     migrations: {
-//         directory: './database/migrations',
-//     },
-//     seeds: {
-//         directory: './database/seeds/sqlite',
-//     },
-// };
+const dbSqliteDev = {
+	client: 'sqlite3',
+	connection: {
+		filename: './database/vendme.db3',
+	},
+	useNullAsDefault: true,
+	migrations: {
+		directory: './database/migrations',
+	},
+	seeds: {
+		directory: './database/seeds/sqlite',
+	},
+};
 const dbSettings = {
 	client: 'pg',
 	connection: dbConnection,
@@ -68,7 +68,6 @@ module.exports = {
 /* require('dotenv').config()
 const pg = require('pg')
 pg.defaults.ssl = true
-
 const localPostgres = {
   host: process.env.HOST,
   database: process.env.DATABASE,
@@ -76,9 +75,7 @@ const localPostgres = {
   user: process.env.USER,
   password: process.env.PASS || ''
 }
-
 const dbConnection = localPostgres
-
 const dbSettings = {
   client: 'pg',
   connection: dbConnection,
@@ -90,7 +87,6 @@ const dbSettings = {
     directory: './data/seeds'
   }
 }
-
 module.exports = {
   development: {
     client: 'sqlite3',
@@ -105,6 +101,6 @@ module.exports = {
       directory: './database/seeds'
     }
   },
-
   production: dbSettings
-} */
+}
+ */
