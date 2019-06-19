@@ -5,11 +5,8 @@ exports.up = function(knex, Promise) {
 
 		// vendor info
 
-		tbl
-			.string('vendor_name', 255)
-			.notNullable()
-			.unique();
-			
+		tbl.string('vendor_name', 255).notNullable();
+
 		tbl.string('bio', 500).notNullable();
 
 		tbl.string('phone_number', 15).notNullable();
