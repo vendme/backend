@@ -9,7 +9,8 @@ const localPostgres = {
 	password: process.env.PASS || '',
 };
 
-const dbConnection = process.env.DATABASE_URL || localPostgres;
+const dbConnection = process.env.DATABASE_ENV || localPostgres;
+// const dbConnection = process.env.DATABASE_URL || localPostgres;
 
 const dbLocalSettings = {
 	client: 'pg',
