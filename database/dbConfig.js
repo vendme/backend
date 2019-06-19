@@ -3,7 +3,7 @@ const knex = require('knex');
 
 const knexConfig = require('../knexfile.js');
 
-const databaseEngine = process.env.DATABASE_URL || 'development';
+const databaseEngine = process.env.DB || 'development';
 //const databaseEngine = 'development';
 
 // module.exports = knex(knexConfig.development);
