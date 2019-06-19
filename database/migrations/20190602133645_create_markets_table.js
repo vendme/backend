@@ -21,15 +21,13 @@ exports.up = function(knex, Promise) {
 		tbl.binary('market_map_file', 2048);
 
 		//FK
-		tbl
-			.integer('days_open')
-			.references('id')
-			.inTable('days');
+		tbl.integer('days_open');
+		/* .references('id')
+			.inTable('days'); */
 		//FK
-		tbl
-			.integer('hours_of_operation')
-			.references('id')
-			.inTable('hours');
+		tbl.integer('hours_of_operation');
+		/* .references('id')
+			.inTable('hours'); */
 
 		tbl
 			.integer('user_market')
