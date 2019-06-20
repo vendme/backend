@@ -3,7 +3,7 @@ const GoogleStrategy = require("passport-google-oauth20");
 const FacebookStrategy = require('passport-facebook');
 require("dotenv").config();
 const Users = require("../database/helpers/usersHelper");
-console.log('ENV Variables', process.env.CLIENT_ID, process.env.CLIENT_SECRET, process.env.COOKIE_KEY, process.env.DATABASE_ENV)
+
 passport.serializeUser((user, done) => {
   try {
     done(null, user.id);

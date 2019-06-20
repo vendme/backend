@@ -22,38 +22,24 @@ router.post('/register', (req, res) => {
     });
 });
 
-// Facebook login
-router.get('/facebook',
-  passport.authenticate('facebook')
-);
-
-router.get('/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login'}), (req, res) => {
-  // Successful authentication, set a token and redirect home
-  req.session.user = req.user;
-  const token = generateToken(req.user);
-  console.log('/facebook/redirect: ', req.user);
-  res.redirect('https://vendme.netlify.com/#/token?=' + token);
-}
-)
-
 // Google login
-router.get('/google',
-  passport.authenticate('google', {
-    scope: ['profile']
-  })
-)
+// router.get('/google',
+//   passport.authenticate('google', {
+//     scope: ['profile']
+//   })
+// )
 
 //callback route for google to redirect to
-router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-  req.session.user = req.user // gives me back my user object I added to the users table with googleID updated
-  const token = generateToken(req.user);
-  console.log('/google/redirect: ', req.user);
+// router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
+//   req.session.user = req.user // gives me back my user object I added to the users table with googleID updated
+//   const token = generateToken(req.user);
+//   console.log('/google/redirect: ', req.user);
 
   // if (process.env.NODE_ENV === 'production') {
   //   res.redirect('https://vendme.netlify.com/#/token?=' + token)
   // } else res.redirect('http://localhost:3000/#/token?=' + token)
-  res.redirect('https://vendme.netlify.com/#/token?=' + token);
-})
+//   res.redirect('https://vendme.netlify.com/#/token?=' + token);
+// })
 
 router.get('/logout', (req, res) => {
   // handle with passport
