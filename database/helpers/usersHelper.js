@@ -1,41 +1,41 @@
 const db = require('../dbConfig.js');
 
 module.exports = {
-  add,
-  find,
-  findBy,
-  findById,
-  findByAccountType,
-  findByGoogleId,
-  addUser,
-  editUser,
-  deleteUser
+	add,
+	find,
+	findBy,
+	findById,
+	findByAccountType,
+	findByGoogleId,
+	addUser,
+	editUser,
+	deleteUser,
 };
 
 function find() {
-  return db('users').select('id', 'username', 'password');
+	return db('users').select('id', 'username', 'password');
 }
 
 function findBy(filter) {
-  return db('users').where(filter);
+	return db('users').where(filter);
 }
 
 function addUser(user) {
 	return db('users')
 		.insert(user)
-    .returning(['id', 'username']);
+		.returning(['id', 'username']);
 }
 
 async function add(user) {
-  const [id] = await db('users').insert(user);
+	const [id] = await db('users').insert(user);
 
-  return findById(id);
+	return findById(id);
 }
 
 function findById(id) {
-  return db('users')
-    .where({ id })
-    .first();
+	return db('users')
+		.where({ id })
+		.first();
 }
 
 function findByAccountType(account_type) {
@@ -43,9 +43,10 @@ function findByAccountType(account_type) {
 }
 
 function findByGoogleId(id) {
-  return db('users')
-    .where({ googleID: id })
-    .first()
+	console.log(id);
+	return db('users')
+		.where({ googleID: id })
+		.first();
 }
 
 function editUser(id, data) {
