@@ -1,6 +1,5 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20");
-const FacebookStrategy = require('passport-facebook');
 require("dotenv").config();
 const Users = require("../database/helpers/usersHelper");
 
