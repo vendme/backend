@@ -3,8 +3,6 @@ const helmet = require("helmet");
 const cors = require("cors");
 const session = require('express-session')
 const KnexSessionStore = require('connect-session-knex')(session)
-const passport = require('passport')
-//require('../config/passport-setup')
 require('dotenv').config()
 
 const authRouter = require('../auth/auth-router.js');
@@ -33,8 +31,6 @@ const sessionOptions = {
   })
 }
 
-server.use(passport.initialize());
-server.use(passport.session());
 server.use(express.json());
 server.use(helmet());
 server.use(cors());
@@ -47,7 +43,7 @@ server.use('/auth', authRouter)
 //server.use('/', usersRouter)
 
 server.get("/", (req, res) => {
-  res.send("I am the Vendme backend server. Up and running!");
+  res.send("I am the Vendme API/server. Up and running!");
 });
 
 module.exports = server;
