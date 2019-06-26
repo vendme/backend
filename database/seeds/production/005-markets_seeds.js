@@ -2,7 +2,7 @@ const faker = require('faker');
 
 const createFakeMarkets = () => {
 	let fakeMarkets = [];
-	const desiredFakeMarkets = 100;
+	const desiredFakeMarkets = 10;
 	for (let i = 0; i < desiredFakeMarkets; i++) {
 		fakeMarkets.push({
 			id: i + 1,
@@ -13,9 +13,15 @@ const createFakeMarkets = () => {
 			zip_code: faker.address.zipCode(),
 			phone_num: faker.phone.phoneNumberFormat(),
 			days_open: faker.date.weekday(),
-			hours_of_operation: '9AM - 9PM',
+			hours_open: '9AM - 8PM',
 			market_info: faker.lorem.paragraph(),
 			market_map_file: faker.image.image(),
+			created_at: Date.parse(
+				faker.date.between(
+					new Date(Date.now() - 1000 * 60 * 60 * 24 * 20),
+					new Date(Date.now() - 1000 * 60 * 60 * 24 * 8)
+				)
+			),
 		});
 	}
 	return fakeMarkets;

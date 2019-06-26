@@ -1,12 +1,8 @@
-require('dotenv').config();
-require('../config/passport-setup');
-
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
-const session = require('express-session');
-const KnexSessionStore = require('connect-session-knex')(session);
-const passport = require('passport');
+require('dotenv').config();
+const admin = require('../firebase-admin/admin');
 
 const authRouter = require('../auth/auth-router.js');
 const usersRouter = require('../database/routes/users-router.js');
@@ -15,27 +11,22 @@ const marketRouter = require('../database/routes/markets-router.js');
 const stallRouter = require('../database/routes/stalls-router.js');
 const server = express();
 
-const sessionOptions = {
-	name: 'vendme',
-	secret: process.env.COOKIE_KEY,
-	cookie: {
-		maxAge: 1000 * 60 * 60, // 1 hour
-		secure: false,
-	},
-	httpOnly: true,
-	resave: false,
-	saveUninitialized: false,
-	store: new KnexSessionStore({
-		knex: require('../database/dbConfig.js'),
-		tablename: 'sessions',
-		sidfieldname: 'sid',
-		createtable: true,
-		clearInterval: 1000 * 60 * 60, // hour
-	}),
-};
+async function verifyToken(req, res, next) {
+	const idToken = req.headers.authorization;
 
-server.use(passport.initialize());
-server.use(passport.session());
+	try {
+		const decodedToken = await admin.auth().verifyIdToken(idToken);
+		if (decodedToken) {
+			req.body.uid = decodedToken.uid;
+			return next();
+		} else {
+			return res.status(401).send('You are not authorized!');
+		}
+	} catch (e) {
+		return res.status(401).send('You are not authorized!');
+	}
+}
+
 server.use(express.json());
 server.use(helmet());
 server.use(cors());
@@ -48,7 +39,7 @@ server.use('/auth', authRouter);
 //server.use('/', usersRouter)
 
 server.get('/', (req, res) => {
-	res.send('I am the Vendme backend server. Up and running!');
+	res.send('I am the Vendme API/server. Up and running!');
 });
 
 module.exports = server;
