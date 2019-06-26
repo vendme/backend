@@ -11,6 +11,8 @@ exports.up = function(knex, Promise) {
 
 		tbl.string('phone_number', 15).notNullable();
 
+		tbl.string('vendor_logo', 2048);
+
 		tbl
 			.integer('market_id')
 			.references('id')

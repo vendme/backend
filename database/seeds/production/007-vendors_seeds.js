@@ -9,6 +9,7 @@ const createFakeVendors = () => {
 			vendor_name: faker.company.companyName(),
 			bio: faker.lorem.paragraph(),
 			phone_number: faker.phone.phoneNumberFormat(),
+			vendor_logo: faker.image.image(),
 			//city: faker.address.city(),
 			market_id: 1,
 			//products: ,

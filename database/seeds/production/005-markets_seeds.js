@@ -12,8 +12,8 @@ const createFakeMarkets = () => {
 			state: faker.address.stateAbbr(),
 			zip_code: faker.address.zipCode(),
 			phone_num: faker.phone.phoneNumberFormat(),
-			days_open: 1,
-			hours_of_operation: 1,
+			days_open: faker.date.weekday(),
+			hours_of_operation: '9AM - 9PM',
 			market_info: faker.lorem.paragraph(),
 			market_map_file: faker.image.image(),
 		});
@@ -21,7 +21,7 @@ const createFakeMarkets = () => {
 	return fakeMarkets;
 };
 
-exports.seed = function(knex, Promis) {
+exports.seed = function(knex, Promise) {
 	return knex('markets')
 		.del()
 		.then(function() {

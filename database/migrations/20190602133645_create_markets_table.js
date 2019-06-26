@@ -18,14 +18,14 @@ exports.up = function(knex, Promise) {
 
 		tbl.string('market_info', 1000).notNullable();
 
-		tbl.binary('market_map_file', 2048);
+		tbl.string('market_map_file', 2048);
 
 		//FK
-		tbl.integer('days_open');
+		tbl.string('days_open', 255);
 		/* .references('id')
 			.inTable('days'); */
 		//FK
-		tbl.integer('hours_of_operation');
+		tbl.string('hours_of_operation', 255);
 		/* .references('id')
 			.inTable('hours'); */
 
