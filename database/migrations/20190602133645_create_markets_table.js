@@ -41,7 +41,8 @@ exports.up = function(knex, Promise) {
 
 		tbl
 			.integer('user_market')
-			.references('id')
+			//.references('id')
+			.references('uid')
 			.inTable('users');
 	});
 };

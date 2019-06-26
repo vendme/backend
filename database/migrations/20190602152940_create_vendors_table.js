@@ -30,7 +30,8 @@ exports.up = function(knex, Promise) {
 
 		tbl
 			.integer('user_vendor')
-			.references('id')
+			//.references('id')
+			.references('uid')
 			.inTable('users')
 			.onDelete('SET NULL')
 			.onUpdate('SET NULL');

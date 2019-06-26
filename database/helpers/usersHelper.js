@@ -2,18 +2,17 @@ const db = require('../dbConfig.js');
 
 module.exports = {
   add,
-  find,
+  getAllUsers,
   findBy,
   findById,
   findByAccountType,
-  findByGoogleId,
   addUser,
   editUser,
   deleteUser
 };
 
-function find() {
-  return db('users').select('id', 'username', 'password');
+function getAllUsers() {
+  return db('users').select('uid', 'email');
 }
 
 function findBy(filter) {
@@ -21,20 +20,21 @@ function findBy(filter) {
 }
 
 function addUser(user) {
+
 	return db('users')
 		.insert(user)
-    .returning(['id', 'username']);
+    .returning(['id', 'uid', 'email']);
 }
 
 async function add(user) {
-  const [id] = await db('users').insert(user);
+  const [uid] = await db('users').insert(user);
 
-  return findById(id);
+  return findById(uid);
 }
 
-function findById(id) {
+function findById(uid) {
   return db('users')
-    .where({ id })
+    .where({ uid })
     .first();
 }
 
@@ -42,19 +42,13 @@ function findByAccountType(account_type) {
 	return db('users').where({ account_type });
 }
 
-function findByGoogleId(id) {
-  return db('users')
-    .where({ googleID: id })
-    .first()
-}
-
-function editUser(id, data) {
+function editUser(uid, data) {
 	return db('users')
-		.where({ id })
-		.update({ ...data }, ['id']);
+		.where({ uid })
+		.update({ ...data }, ['uid']);
 }
-function deleteUser(id) {
+function deleteUser(uid) {
 	return db('users')
-		.where({ id })
+		.where({ uid })
 		.del();
 }
