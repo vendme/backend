@@ -2,12 +2,14 @@ const faker = require('faker');
 
 const createFakeVendors = () => {
 	let fakeVendors = [];
-	const desiredFakeVendors = 100;
+	const desiredFakeVendors = 10;
 	for (let i = 0; i < desiredFakeVendors; i++) {
 		fakeVendors.push({
 			id: i + 1,
+			vendor_name: faker.company.companyName(),
 			bio: faker.lorem.paragraph(),
 			phone_number: faker.phone.phoneNumberFormat(),
+			vendor_logo: faker.image.image(),
 			//city: faker.address.city(),
 			market_id: 1,
 			//products: ,
