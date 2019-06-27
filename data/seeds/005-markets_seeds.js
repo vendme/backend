@@ -13,7 +13,7 @@ const createFakeMarkets = () => {
 			zip_code: faker.address.zipCode(),
 			phone_num: faker.phone.phoneNumberFormat(),
 			days_open: 1,
-			hours_of_operation: 1,
+			hours_of_open: 1,
 			market_info: faker.lorem.paragraph(),
 			market_map_file: faker.image.image(),
 		});

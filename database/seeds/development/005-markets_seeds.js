@@ -27,7 +27,7 @@ const createFakeMarkets = () => {
 	return fakeMarkets;
 };
 
-exports.seed = function(knex, Promis) {
+exports.seed = function(knex, Promise) {
 	return knex('markets')
 		.del()
 		.then(function() {
