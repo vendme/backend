@@ -2,14 +2,15 @@ const faker = require('faker');
 
 const createFakeUsers = () => {
 	let fakeUsers = [];
-	const desiredFakeUsers = 150;
+	const desiredFakeUsers = 10;
 	for (let i = 0; i < desiredFakeUsers; i++) {
 		fakeUsers.push({
 			id: i + 1,
-			username: faker.internet.userName(),
-			password: faker.internet.password(),
-			account_type: 1,
+			uid: faker.random.uuid(),
+			//username: faker.internet.userName(),
+			//password: faker.internet.password(),
 			email: faker.internet.email(),
+			account_type: 'account_type',
 			// user_vendor: faker.lorem.word
 			// user_market: faker.lorem.word,
 			// user_customer: faker.name.word,
@@ -24,7 +25,7 @@ const createFakeUsers = () => {
 		}); */
 	}
 
-	for (let i = 0; i < desiredFakeUsers; i++) {
+	/* for (let i = 0; i < desiredFakeUsers; i++) {
 		fakeUsers.push({
 			id: i * 3 + 211,
 			username: faker.internet.userName(),
@@ -48,7 +49,7 @@ const createFakeUsers = () => {
 			// user_market: faker.lorem.word,
 			// user_customer: faker.name.word,
 		});
-	}
+	} */
 
 	return fakeUsers;
 };
