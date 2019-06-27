@@ -12,7 +12,7 @@ const createFakeMarkets = () => {
 			state: faker.address.stateAbbr(),
 			zip_code: faker.address.zipCode(),
 			phone_num: faker.phone.phoneNumberFormat(),
-			date_open: faker.date.weekday(),
+			days_open: faker.date.weekday(),
 			hours_open: '9AM - 8PM',
 			market_info: faker.lorem.paragraph(),
 			market_map_file: faker.image.image(),
