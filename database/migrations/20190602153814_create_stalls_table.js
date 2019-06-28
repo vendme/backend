@@ -22,11 +22,17 @@ exports.up = function(knex, Promise) {
 			.inTable('categories')
 			.onDelete('CASCADE');
 
-		tbl
+		/* tbl
 			.integer('stall_size')
 			.references('id')
 			.inTable('stall_sizes')
-			.onDelete('CASCADE');
+			.onDelete('CASCADE'); */
+
+		tbl.integer('quantity');
+
+		tbl.integer('length');
+
+		tbl.integer('width');
 
 		tbl.boolean('availability');
 

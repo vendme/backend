@@ -8,7 +8,7 @@ exports.up = function(knex, Promise) {
 
 		tbl.decimal('product_price', [5, 2]).notNullable();
 
-		tbl.binary('product_image', 2048);
+		tbl.string('product_image', 2048);
 
 		tbl
 			.integer('product_category')

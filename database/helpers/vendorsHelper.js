@@ -1,4 +1,4 @@
-const db = require('../dbConfig');
+const db = require('../dbConfig.js');
 module.exports = {
 	getVendors,
 	getVendorById,

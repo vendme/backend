@@ -18,7 +18,7 @@ exports.up = function(knex, Promise) {
 
 		tbl.string('market_info', 1000).notNullable();
 
-		tbl.string('date_open', 255);
+		tbl.string('days_open', 255);
 
 		tbl.string('hours_open', 255);
 
