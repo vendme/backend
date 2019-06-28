@@ -2,7 +2,7 @@ const faker = require('faker');
 
 const createFakeProducts = () => {
 	let fakeProducts = [];
-	const desiredFakeProducts = 100;
+	const desiredFakeProducts = 10;
 	for (let i = 0; i < desiredFakeProducts; i++) {
 		fakeProducts.push({
 			id: i + 1,

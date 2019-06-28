@@ -2,7 +2,7 @@ const faker = require('faker');
 
 const createFakeMarkets = () => {
 	let fakeMarkets = [];
-	const desiredFakeMarkets = 100;
+	const desiredFakeMarkets = 10;
 	for (let i = 0; i < desiredFakeMarkets; i++) {
 		fakeMarkets.push({
 			id: i + 1,
@@ -12,7 +12,7 @@ const createFakeMarkets = () => {
 			state: faker.address.stateAbbr(),
 			zip_code: faker.address.zipCode(),
 			phone_num: faker.phone.phoneNumberFormat(),
-			date_open: faker.date.weekday(),
+			days_open: faker.date.weekday(),
 			hours_open: '9AM - 8PM',
 			market_info: faker.lorem.paragraph(),
 			market_map_file: faker.image.image(),
@@ -27,7 +27,7 @@ const createFakeMarkets = () => {
 	return fakeMarkets;
 };
 
-exports.seed = function(knex, Promis) {
+exports.seed = function(knex, Promise) {
 	return knex('markets')
 		.del()
 		.then(function() {

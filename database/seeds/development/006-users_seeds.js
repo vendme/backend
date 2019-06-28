@@ -2,7 +2,7 @@ const faker = require('faker');
 
 const createFakeUsers = () => {
 	let fakeUsers = [];
-	const desiredFakeUsers = 150;
+	const desiredFakeUsers = 10;
 	for (let i = 0; i < desiredFakeUsers; i++) {
 		fakeUsers.push({
 			id: i + 1,
