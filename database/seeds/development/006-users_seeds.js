@@ -6,7 +6,7 @@ const createFakeUsers = () => {
   for (let i = 0; i < desiredFakeUsers; i++) {
     fakeUsers.push({
       id: i + 1,
-      uid: '164G1342EF8967WP03',
+      uid: faker.random.uuid(),
       account_type: faker.random.number({ min: 1, max: 3 }),
       email: faker.internet.email()
     })
