@@ -17,11 +17,11 @@ exports.up = function(knex, Promise) {
       .inTable('vendors')
       .onDelete('CASCADE')
 
-    // tbl
-    //   .integer('category_id')
-    //   .references('id')
-    //   .inTable('categories')
-    //   .onDelete('CASCADE')
+    tbl
+      .integer('category_id')
+      .references('id')
+      .inTable('categories')
+      .onDelete('CASCADE')
 
     tbl.integer('length').notNullable()
 
