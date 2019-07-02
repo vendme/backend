@@ -23,12 +23,12 @@ exports.up = function(knex, Promise) {
 
     tbl.string('product_image', 2048)
 
-    tbl
-      .integer('product_category')
-      .references('id')
-      .inTable('categories')
-      .onDelete('CASCADE')
-      .onUpdate('CASCADE')
+    //   tbl
+    //     .integer('product_category')
+    //     .references('id')
+    //     .inTable('categories')
+    //     .onDelete('CASCADE')
+    //     .onUpdate('CASCADE')
   })
 }
 
