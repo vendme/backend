@@ -1,24 +1,37 @@
 exports.up = function(knex, Promise) {
-	return knex.schema.createTable('products', (tbl) => {
-		tbl.increments();
+  return knex.schema.createTable('products', tbl => {
+    tbl.increments()
 
-		tbl.string('product_name', 128).notNullable();
+    tbl
+      .integer('market_id')
+      .references('id')
+      .inTable('markets')
+      .onDelete('CASCADE')
+      .notNullable()
 
-		tbl.string('product_description', 500).notNullable();
+    tbl
+      .integer('vendor_id')
+      .references('id')
+      .inTable('vendors')
+      .onDelete('CASCADE')
 
-		tbl.decimal('product_price', [5, 2]).notNullable();
+    tbl.string('product_name', 128).notNullable()
 
-		tbl.string('product_image', 2048);
+    tbl.string('product_description', 500).notNullable()
 
-		tbl
-			.integer('product_category')
-			.references('id')
-			.inTable('categories')
-			.onDelete('SET NULL')
-			.onUpdate('SET NULL');
-	});
-};
+    tbl.decimal('product_price', [5, 2]).notNullable()
+
+    tbl.string('product_image', 2048)
+
+    tbl
+      .integer('product_category')
+      .references('id')
+      .inTable('categories')
+      .onDelete('SET NULL')
+      .onUpdate('SET NULL')
+  })
+}
 
 exports.down = function(knex, Promis) {
-	return knex.schema.dropTableIfExists('products');
-};
+  return knex.schema.dropTableIfExists('products')
+}
