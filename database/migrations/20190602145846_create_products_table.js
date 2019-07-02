@@ -27,8 +27,8 @@ exports.up = function(knex, Promise) {
       .integer('product_category')
       .references('id')
       .inTable('categories')
-      .onDelete('SET NULL')
-      .onUpdate('SET NULL')
+      .onDelete('CASCADE')
+      .onUpdate('CASCADE')
   })
 }
 
