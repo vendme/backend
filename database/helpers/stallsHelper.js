@@ -35,7 +35,7 @@ function editStall(id, data) {
 		.update({ ...data }, ['id']);
 }
 function deleteStall(id) {
-	return db('markets')
+	return db('stalls')
 		.where({ id })
 		.del();
 }
