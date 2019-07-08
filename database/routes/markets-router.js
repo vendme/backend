@@ -78,4 +78,17 @@ router.delete('/:id', async (req, res) => {
 		});
 	}
 });
+
+
+router.get('/:id/products', async (req, res) => {
+	const { id } = req.params;
+	try {
+		const market = await Markets.getProductsByMarketId(id);
+		market
+			? res.status(200).json(market)
+			: res.status(404).json({ error: 'Products in this market are not found' });
+	} catch (error) {
+		res.status(500).json({ error });
+	}
+});
 module.exports = router;
