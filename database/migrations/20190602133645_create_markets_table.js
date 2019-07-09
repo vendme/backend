@@ -30,8 +30,8 @@ exports.up = function(knex, Promise) {
 			.integer('user_market')
 			.references('id')
 			.inTable('users')
-			.onDelete('CASCADE')
-			.onUpdate('CASCADE');
+			.onDelete('SET NULL')
+			.onUpdate('SET NULL');
 	});
 };
 
