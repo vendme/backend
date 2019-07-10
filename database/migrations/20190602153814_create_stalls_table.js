@@ -7,8 +7,7 @@ exports.up = function(knex, Promise) {
 		tbl
 			.integer('market_id')
 			.references('id')
-			.inTable('markets')
-			.onDelete('CASCADE');
+			.inTable('markets');
 
 		tbl
 			.integer('vendor_id')
