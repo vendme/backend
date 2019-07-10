@@ -4,11 +4,10 @@ exports.up = function(knex, Promise) {
 		tbl.increments();
 
 		// FK
-		tbl
+		/* tbl
 			.integer('market_id')
 			.references('id')
-			.inTable('markets')
-			.onDelete('SET NULL');
+			.inTable('markets'); */
 
 		tbl
 			.integer('vendor_id')
