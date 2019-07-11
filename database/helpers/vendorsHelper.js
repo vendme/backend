@@ -42,9 +42,9 @@ function deleteVendor(id) {
 		.where({ id })
 		.del();
 }
-/* function getStallsByVendorId(vendor_id) {
+function getStallsByVendorId(vendor_id) {
 	return db('stalls').where({ vendor_id });
-} */
+}
 function getProductsByVendorId(vendor_id) {
 	return db('products').where({ vendor_id });
 }
