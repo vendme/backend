@@ -9,12 +9,12 @@ exports.up = function(knex, Promise) {
 			.onDelete('CASCADE')
 			.notNullable();
 
-		tbl
+		/* tbl
 			.integer('vendor_id')
 			.references('id')
 			.inTable('vendors')
 			.onDelete('CASCADE')
-			.onUpdate('CASCADE');
+			.onUpdate('CASCADE'); */
 
 		tbl.string('product_name', 128).notNullable();
 
