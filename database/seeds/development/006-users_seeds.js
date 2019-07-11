@@ -11,6 +11,12 @@ const createFakeUsers = () => {
       email: faker.internet.email()
     })
   }
+  fakeUsers.push({
+    id: desiredFakeUsers + 1,
+    uid: 'GAkYhZmJf9QaUHAwTFQ9ql8NI833',
+    email: 'joshuadgon@gmail.com',
+    account_type: 1
+  })
 
   return fakeUsers
 }
