@@ -39,7 +39,7 @@ function deleteStall(id) {
 		.where({ id })
 		.del();
 }
-/* function getSizeByVendorId(vendor_id) {
+function getSizeByVendorId(vendor_id) {
   return db('stall_sizes')
     .where({ vendor_id })
-} */
+}
