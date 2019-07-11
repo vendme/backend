@@ -6,7 +6,7 @@ module.exports = {
 	editVendor,
 	deleteVendor,
 	getStallsByVendorId,
-	getProductsByVendorId
+	getProductsByVendorId,
 };
 
 function getVendors() {

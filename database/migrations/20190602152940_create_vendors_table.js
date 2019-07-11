@@ -17,22 +17,22 @@ exports.up = function(knex, Promise) {
 			.integer('market_id')
 			.references('id')
 			.inTable('markets')
-			.onDelete('SET NULL')
-			.onUpdate('SET NULL');
+			.onDelete('CASCADE')
+			.onUpdate('CASCADE');
 
 		tbl
 			.integer('products')
 			.references('id')
 			.inTable('products')
-			.onDelete('SET NULL')
-			.onUpdate('SET NULL');
+			.onDelete('CASCADE')
+			.onUpdate('CASCADE');
 
 		tbl
 			.integer('user_vendor')
 			.references('id')
 			.inTable('users')
-			.onDelete('SET NULL')
-			.onUpdate('SET NULL');
+			.onDelete('CASCADE')
+			.onUpdate('CASCADE');
 	});
 };
 
