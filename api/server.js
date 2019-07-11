@@ -37,7 +37,8 @@ server.use('/api/vendor', vendorRouter);
 server.use('/api/market', marketRouter);
 server.use('/api/stalls', stallRouter);
 server.use('/api/products', productsRouter);
-server.use('/auth', authRouter);
+//server.use('/auth', authRouter);
+server.use('/auth', verifyToken, authRouter);
 //server.use('/', usersRouter)
 
 server.get('/', (req, res) => {

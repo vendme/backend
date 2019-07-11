@@ -6,7 +6,7 @@ module.exports = {
   findBy,
   findById,
   findByAccountType,
-  findByGoogleId,
+  findByUID,
   addUser,
   editUser,
   deleteUser
@@ -42,10 +42,10 @@ function findByAccountType(account_type) {
   return db('users').where({ account_type })
 }
 
-function findByGoogleId(id) {
-  console.log(id)
+function findByUID(uid) {
+
   return db('users')
-    .where({ googleID: id })
+    .where({ uid })
     .first()
 }
 
