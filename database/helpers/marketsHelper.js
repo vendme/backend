@@ -8,9 +8,9 @@ module.exports = {
 	getStallsByMarketId,
 	getProductsByMarketId,
 };
-/* function getStallsByMarketId(market_id) {
+function getStallsByMarketId(market_id) {
 	return db('stalls').where({ market_id });
-} */
+}
 function getProductsByMarketId(market_id) {
 	return db('products').where({ market_id });
 }
