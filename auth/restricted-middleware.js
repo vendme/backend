@@ -1,20 +1,17 @@
-const jwt = require('jsonwebtoken');
-const { jwtSecret } = require('../config/secrets.js');
+const admin = require('../firebase-admin/admin')
 
+module.exports = async function verifyToken(req, res, next) {
+  const idToken = req.headers.authorization
 
-module.exports = (req, res, next) => {
-  const token = req.headers.authorization;
-  if (token) {
-    jwt.verify(token, jwtSecret, (err, decodedToken) => {
-      if (err) {
-        res.status(401).json({ message: 'Restricted endpoint - missing or bad token!'});
-      } else {
-        req.decodedJwt = decodedToken; // make the token available to the rest of the API
-        console.log('decoded token', req.decodedJwt);
-        next();
-      }
-    })
-  } else {
-    res.status(401).json({ message: 'user not verified!'});
+  try {
+    const decodedToken = await admin.auth().verifyIdToken(idToken)
+    if (decodedToken) {
+      req.body.uid = decodedToken.uid
+      return next()
+    } else {
+      return res.status(401).send('You are not authorized!')
+    }
+  } catch (e) {
+    return res.status(401).send('You are not authorized!')
   }
-};
+}

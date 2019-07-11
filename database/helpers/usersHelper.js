@@ -43,8 +43,8 @@ function findByAccountType(account_type) {
 }
 
 function findByUID(uid) {
-
   return db('users')
+    .select('id')
     .where({ uid })
     .first()
 }

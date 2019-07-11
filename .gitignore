@@ -3,3 +3,4 @@
 .yarn-integrity
 .DS_Store
 .vscode
+*.db3
