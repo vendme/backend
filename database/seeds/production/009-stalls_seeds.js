@@ -35,7 +35,7 @@ exports.seed = function(knex, Promise) {
 				{
 					id: 3,
 					market_id: 5,
-					vendor_id: 12,
+					vendor_id: 10,
 					category_id: 2,
 					length: 109,
 					width: 120,
