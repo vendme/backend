@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const jwt = require('jsonwebtoken');
+const verifyToken = require('../../auth/restricted-middleware')
 const Vendors = require('../helpers/vendorsHelper.js');
+const Users = require('../helpers/usersHelper.js')
 
 router.get('/', async (req, res) => {
 	try {
@@ -22,9 +23,17 @@ router.get('/:id', async (req, res) => {
 	}
 });
 
-router.post('/', async (req, res) => {
+router.post('/', verifyToken, async (req, res) => {
 	try {
-		const vendor = await Vendors.addVendor(req.body);
+			const { id } = await Users.findByUID(req.body.uid)
+			const user_vendor = id
+			delete req.body.uid
+			const body = {
+				...req.body,
+				user_vendor,
+				created_at: Date.now()
+			}
+		const vendor = await Vendors.addVendor(body);
 		res.status(201).json(vendor);
 	} catch (error) {
 		console.log(error);

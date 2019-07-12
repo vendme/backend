@@ -25,44 +25,21 @@ module.exports = {
       directory: './database/seeds/production'
     },
     useNullAsDefault: true
-  }
+	},
+	
+	test: {
+    client: 'sqlite3',
+    connection: {
+      filename: './database/test.sqlite3',
+    },
+    useNullAsDefault: true,
+    migrations: {
+      directory: './database/migrations',
+    },
+    seeds: {
+      directory: './database/seeds',
+		}
+	}
 }
 
-/* module.exports = {
-	development: {
-		client: 'pg',
-		connection: 'postgres://localhost/<examples>',
-		migrations: {
-			directory: './db/migrations',
-		},
-		seeds: {
-			directory: './db/seeds/dev',
-		},
-		useNullAsDefault: true,
-	},
 
-	test: {
-		client: 'pg',
-		connection: 'postgres://localhost/<examples_test>',
-		migrations: {
-			directory: './db/migrations',
-		},
-		seeds: {
-			directory: './db/seeds/test',
-		},
-		useNullAsDefault: true,
-	},
-
-	production: {
-		client: 'pg',
-		connection: process.env.DATABASE_URL,
-		migrations: {
-			directory: './db/migrations',
-		},
-		seeds: {
-			directory: './db/seeds/production',
-		},
-		useNullAsDefault: true,
-	},
-};
- */
