@@ -46,5 +46,5 @@ function getStallsByVendorId(vendor_id) {
 	return db('stalls').where({ vendor_id });
 }
 function getProductsByVendorId(vendor_id) {
-	return db('products').where({ vendor_id });
+	return db('vendor_products').where({ vendor_id });
 }
