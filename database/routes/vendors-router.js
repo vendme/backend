@@ -100,4 +100,8 @@ router.get('/:id/products', async (req, res) => {
 		res.status(500).json({ error });
 	}
 });
+
+
+
+
 module.exports = router;
