@@ -10,6 +10,14 @@ router.get('/', async (req, res) => {
 		res.status(500).json({ error });
 	}
 });
+router.get('/category', async (req, res) => {
+	try {
+		const category = await Products.getCategories();
+		res.status(200).json(category);
+	} catch (error) {
+		res.status(500).json({ error });
+	}
+});
 router.get('/:id', async (req, res) => {
 	const { id } = req.params;
 	try {
