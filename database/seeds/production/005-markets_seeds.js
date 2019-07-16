@@ -5,7 +5,7 @@ const createFakeMarkets = () => {
 	const desiredFakeMarkets = 10;
 	for (let i = 0; i < desiredFakeMarkets; i++) {
 		fakeMarkets.push({
-			id: i + 1,
+			//id: i + 1,
 			user_market: i + 1,
 			market_name: faker.company.companyName(),
 			address: faker.address.streetAddress(),
