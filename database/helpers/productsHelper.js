@@ -5,7 +5,7 @@ module.exports = {
 	addProduct,
 	editProduct,
 	deleteProduct,
-	getCategories
+	getCategories,
 };
 function getCategories() {
 	return db('categories');
@@ -24,7 +24,7 @@ function getProductById(id) {
 function addProduct(product) {
 	return db('products')
 		.insert(product)
-    .returning(['id', 'product_name']);
+		.returning(['id', 'product_name']);
 }
 
 function editProduct(id, data) {
