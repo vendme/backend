@@ -2,7 +2,7 @@ exports.up = function(knex, Promise) {
 	return knex.schema.createTable('stalls', function(tbl) {
 		//PK
 		tbl.increments();
-
+		tbl.string('stall_name');
 		// FK
 		tbl
 			.integer('market_id')
