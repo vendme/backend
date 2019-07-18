@@ -26,10 +26,14 @@
 		"stripe": "^7.4.0"
 	},
 	"devDependencies": {
-		"nodemon": "^1.19.1"
+		"chai": "^4.2.0",
+		"chai-http": "^4.3.0",
+		"mocha": "^6.1.4",
+		"nodemon": "^1.19.1",
+		"request-promise": "^4.2.4"
 	},
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
+		"test": "NODE_ENV=test mocha --timeout 10000 --exit",
 		"server": "nodemon index.js",
 		"start": "node index.js"
 	},

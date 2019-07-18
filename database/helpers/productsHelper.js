@@ -4,9 +4,12 @@ module.exports = {
 	getProductById,
 	addProduct,
 	editProduct,
-	deleteProduct
+	deleteProduct,
+	getCategories
 };
-
+function getCategories() {
+	return db('categories');
+}
 
 function getProducts() {
 	return db('products');
