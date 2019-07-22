@@ -18,7 +18,7 @@ const createFakeUsers = () => {
     account_type: 1
   })
   fakeUsers.push({
-    id: desiredFakeUsers + 1,
+    id: desiredFakeUsers + 2,
     uid: '8H6eZ2wfQ7ajLbnZMtWfF369CIE2',
     email: 'ash4741@gmail.com',
     account_type: 1
