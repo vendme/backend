@@ -1,4 +1,4 @@
-const db = require('../dbConfig');
+const db = require('../dbConfig.js');
 module.exports = {
 	getVendors,
 	getVendorById,
@@ -6,6 +6,7 @@ module.exports = {
 	editVendor,
 	deleteVendor,
 	getStallsByVendorId,
+	getProductsByVendorId,
 };
 
 function getVendors() {
@@ -43,4 +44,10 @@ function deleteVendor(id) {
 }
 function getStallsByVendorId(vendor_id) {
 	return db('stalls').where({ vendor_id });
+}
+function getProductsByVendorId(vendor_id) {
+	return db('products')
+	.innerJoin('vendors_products', 'products.id', '=', 'vendors_products.products_id')
+	.innerJoin('vendors', 'vendors.id', '=', 'vendors_products.vendor_id')
+  .where({ vendor_id });
 }

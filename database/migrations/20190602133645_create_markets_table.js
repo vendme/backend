@@ -18,31 +18,20 @@ exports.up = function(knex, Promise) {
 
 		tbl.string('market_info', 1000).notNullable();
 
-		tbl.string('date_open', 255);
-
-		tbl.string('hours_open', 255);
+		tbl.string('hours_open', 70);
 
 		tbl.string('market_map_file', 2048);
 
+		tbl.string('agreement_file', 2048);
+
 		tbl.bigInteger('created_at').notNullable();
-
-		//tbl.binary('market_map_file', 2048);
-
-		//FK
-		/* tbl
-			.integer('days_open')
-			.references('id')
-			.inTable('days'); */
-		//FK
-		/* tbl
-			.integer('hours_of_operation')
-			.references('id')
-			.inTable('hours'); */
 
 		tbl
 			.integer('user_market')
 			.references('id')
-			.inTable('users');
+			.inTable('users')
+			.onDelete('SET NULL')
+			.onUpdate('SET NULL');
 	});
 };
 

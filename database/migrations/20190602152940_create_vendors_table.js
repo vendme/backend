@@ -11,26 +11,28 @@ exports.up = function(knex, Promise) {
 
 		tbl.string('phone_number', 15).notNullable();
 
+		tbl.string('vendor_logo', 2048);
+
 		tbl
 			.integer('market_id')
 			.references('id')
 			.inTable('markets')
-			.onDelete('SET NULL')
-			.onUpdate('SET NULL');
+			.onDelete('CASCADE')
+			.onUpdate('CASCADE');
 
 		tbl
 			.integer('products')
 			.references('id')
 			.inTable('products')
-			.onDelete('SET NULL')
-			.onUpdate('SET NULL');
+			.onDelete('CASCADE')
+			.onUpdate('CASCADE');
 
 		tbl
 			.integer('user_vendor')
 			.references('id')
 			.inTable('users')
-			.onDelete('SET NULL')
-			.onUpdate('SET NULL');
+			.onDelete('CASCADE')
+			.onUpdate('CASCADE');
 	});
 };
 

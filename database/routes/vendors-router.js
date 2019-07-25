@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const jwt = require('jsonwebtoken');
+const verifyToken = require('../../auth/restricted-middleware')
 const Vendors = require('../helpers/vendorsHelper.js');
+const Users = require('../helpers/usersHelper.js')
 
 router.get('/', async (req, res) => {
 	try {
@@ -22,9 +23,17 @@ router.get('/:id', async (req, res) => {
 	}
 });
 
-router.post('/', async (req, res) => {
+router.post('/', verifyToken, async (req, res) => {
 	try {
-		const vendor = await Vendors.addVendor(req.body);
+			const { id } = await Users.findByUID(req.body.uid)
+			const user_vendor = id
+			delete req.body.uid
+			const body = {
+				...req.body,
+				user_vendor,
+				created_at: Date.now()
+			}
+		const vendor = await Vendors.addVendor(body);
 		res.status(201).json(vendor);
 	} catch (error) {
 		console.log(error);
@@ -79,5 +88,20 @@ router.get('/:id/stalls', async (req, res) => {
     res.status(500).json({ error })
   }
 })
+
+router.get('/:id/products', async (req, res) => {
+	const { id } = req.params;
+	try {
+		const vendor = await Vendors.getProductsByVendorId(id);
+		vendor
+			? res.status(200).json(vendor)
+			: res.status(404).json({ error: 'Products in this vendor are not found' });
+	} catch (error) {
+		res.status(500).json({ error });
+	}
+});
+
+
+
 
 module.exports = router;
