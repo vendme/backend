@@ -1,31 +1,31 @@
 const router = require('express').Router();
 
-const Stalls = require('../helpers/stallsHelper')
+const Stalls = require('../helpers/stallsHelper');
 
 router.get('/', (req, res) => {
-  Stalls.find()
-    .then(stalls => {
-      res.json(stalls);
-    })
-    .catch(err => res.send(err));
-})
+	Stalls.find()
+		.then((stalls) => {
+			res.json(stalls);
+		})
+		.catch((err) => res.send(err));
+});
 
 router.get('/:id', async (req, res) => {
-  const { id } = req.params
-  try {
-    const stall = await Stalls.findById(id)
-    stall
-      ? res.status(200).json(stall)
-      : res.status(404).json({ error: 'stall is not found' })
-  } catch (error) {
-    res.status(500).json({ error })
-  }
-})
+	const { id } = req.params;
+	try {
+		const stall = await Stalls.findById(id);
+		stall
+			? res.status(200).json(stall)
+			: res.status(404).json({ error: 'stall is not found' });
+	} catch (error) {
+		res.status(500).json({ error });
+	}
+});
 
 router.post('/', async (req, res) => {
 	try {
-		const stall = await Stalls.add(req.body);
-	
+		const stall = await Stalls.addStall(req.body);
+
 		res.status(201).json(stall);
 	} catch (error) {
 		console.log(error);
@@ -68,14 +68,14 @@ router.delete('/:id', async (req, res) => {
 	}
 });
 router.get('/:id/size', async (req, res) => {
-  const { id } = req.params
-  try {
-    const size = await Stalls.getSizeByVendorId(id)
-    size
-      ? res.status(200).json(size)
-      : res.status(404).json({ error: 'Sizes in this vnedor are not found' })
-  } catch (error) {
-    res.status(500).json({ error })
-  }
-})
+	const { id } = req.params;
+	try {
+		const size = await Stalls.getSizeByVendorId(id);
+		size
+			? res.status(200).json(size)
+			: res.status(404).json({ error: 'Sizes in this vnedor are not found' });
+	} catch (error) {
+		res.status(500).json({ error });
+	}
+});
 module.exports = router;

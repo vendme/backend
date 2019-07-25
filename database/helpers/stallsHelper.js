@@ -1,7 +1,7 @@
 const db = require('../dbConfig.js');
 
 module.exports = {
-	add,
+	addStall,
 	find,
 	findBy,
 	findById,
@@ -18,10 +18,16 @@ function findBy(filter) {
 	return db('stalls').where(filter);
 }
 
-async function add(stall) {
+/* async function add(stall) {
 	const [id] = await db('stalls').insert(stall);
 
 	return findById(id);
+} */
+// Testing addStall function
+function addStall(stall) {
+	return db('stalls')
+		.insert(stall)
+		.returning(['id', 'stall_name', 'market_id', 'length', 'width']);
 }
 
 function findById(id) {
@@ -40,6 +46,5 @@ function deleteStall(id) {
 		.del();
 }
 function getSizeByVendorId(vendor_id) {
-  return db('stall_sizes')
-    .where({ vendor_id })
+	return db('stall_sizes').where({ vendor_id });
 }
