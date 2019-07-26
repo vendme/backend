@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const verifyToken = require('../../auth/restricted-middleware')
 const Markets = require('../helpers/marketsHelper.js')
+const Vendors = require('../helpers/vendorsHelper.js')
 const Users = require('../helpers/usersHelper.js')
 
 router.get('/', async (req, res) => {
@@ -95,6 +96,18 @@ router.get('/:id/products', async (req, res) => {
     market
       ? res.status(200).json(market)
       : res.status(404).json({ error: 'Products in this market are not found' })
+  } catch (error) {
+    res.status(500).json({ error })
+  }
+})
+
+router.get('/:id/vendors', async (req, res) => {
+  const { id } = req.params
+  try {
+    const vendors = await Vendors.getVendorsByMarketId(id)
+    vendors
+      ? res.status(200).json(vendors)
+      : res.status(404).json({ error: 'Vendors in this market are not found' })
   } catch (error) {
     res.status(500).json({ error })
   }
