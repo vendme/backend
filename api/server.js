@@ -11,6 +11,7 @@ const marketRouter = require('../database/routes/markets-router.js');
 const stallRouter = require('../database/routes/stalls-router.js');
 const productsRouter = require('../database/routes/products-router.js');
 const paymentsRouter = require('../database/routes/payments');
+const venproductsRouter = require('../database/routes/venproducts-router.js');
 const server = express();
 const verifyToken = require('../auth/restricted-middleware');
 
@@ -27,7 +28,7 @@ server.use('/api/stalls', stallRouter);
 server.use('/api/products', productsRouter);
 server.use('/auth', verifyToken, authRouter);
 server.use('/api/payments', paymentsRouter);
-server.use('/api/vendor_products/', vendorRouter);
+server.user('/api/venproducts', venproductsRouter);
 
 server.get('/', (req, res) => {
 	res.send('I am the Vendme API/server. Up and running!');
