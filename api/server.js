@@ -28,7 +28,7 @@ server.use('/api/stalls', stallRouter);
 server.use('/api/products', productsRouter);
 server.use('/auth', verifyToken, authRouter);
 server.use('/api/payments', paymentsRouter);
-server.user('/api/venproducts', venproductsRouter);
+server.use('/api/venproducts', venproductsRouter);
 
 server.get('/', (req, res) => {
 	res.send('I am the Vendme API/server. Up and running!');

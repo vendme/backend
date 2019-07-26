@@ -23,7 +23,7 @@
 		"passport-google-oauth20": "^2.0.0",
 		"pg": "^7.11.0",
 		"sqlite3": "^4.0.8",
-		"stripe": "^7.4.0"
+		"stripe": "^7.5.0"
 	},
 	"devDependencies": {
 		"chai": "^4.2.0",
