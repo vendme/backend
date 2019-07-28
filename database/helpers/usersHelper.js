@@ -13,7 +13,7 @@ module.exports = {
 }
 
 function find() {
-  return db('users').select('id', 'uid', 'email', 'account_type')
+  return db('users')
 }
 
 function findBy(filter) {

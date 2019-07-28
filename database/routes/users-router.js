@@ -38,7 +38,9 @@ router.put('/:id', verifyToken, async (req, res) => {
   try {
     const { id } = await Users.findByUID(req.body.uid)
     if (req.params.id == id) {
-      const edited = await Users.editUser({ profile_pic: req.body.profile_pic })
+      const edited = await Users.editUser(id, {
+        profile_pic: req.body.profile_pic
+      })
       res.status(200).json(edited)
     } else {
       res.status(500).json({
