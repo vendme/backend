@@ -14,6 +14,7 @@ exports.up = function(knex, Promise) {
       .inTable('vendors')
       .onDelete('CASCADE')
       .onUpdate('CASCADE')
+      .notNullable()
 
     tbl.string('product_name', 128).notNullable()
 
