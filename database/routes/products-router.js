@@ -35,7 +35,7 @@ router.get('/vendor/:id', async (req, res) => {
   const { id } = req.params
   try {
     const products = await Products.getProductsByVendor(id)
-    product
+    products
       ? res.status(200).json(products)
       : res.status(404).json({ error: 'Products by vendor not found' })
   } catch (error) {
