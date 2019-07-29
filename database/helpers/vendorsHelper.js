@@ -27,14 +27,7 @@ function getVendorsByMarketId(id) {
 function addVendor(vendor) {
   return db('vendors')
     .insert(vendor)
-    .returning([
-      'id',
-      'vendor_name',
-      'bio',
-      'phone_number',
-      'market_id',
-      'products'
-    ])
+    .returning(['id', 'vendor_name', 'bio', 'phone_number', 'market_id'])
 }
 
 function editVendor(id, data) {
