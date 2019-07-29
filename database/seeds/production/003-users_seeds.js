@@ -26,6 +26,20 @@ const createFakeUsers = () => {
     profile_pic:
       'https://res.cloudinary.com/vendme/image/upload/v1563242911/sample.jpg'
   })
+  fakeUsers.push({
+    uid: 'iy1dU5IxLFbQ0wDPuDpv49gmFto1',
+    email: 'ash4748@hotmail.com',
+    account_type: 2,
+    profile_pic:
+      'https://res.cloudinary.com/vendme/image/upload/v1563242911/sample.jpg'
+  })
+  fakeUsers.push({
+    uid: 'rto3et7SD4UNUlBJG2MfpMu73yd2',
+    email: 'shrimpcx@gmail.com',
+    account_type: 2,
+    profile_pic:
+      'https://res.cloudinary.com/vendme/image/upload/v1564282027/qboxrgnocolnly3rkpex.jpg'
+  })
   return fakeUsers
 }
 exports.seed = function(knex, Promise) {
