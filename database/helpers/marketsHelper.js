@@ -1,42 +1,49 @@
-const db = require('../dbConfig.js');
+const db = require('../dbConfig.js')
 module.exports = {
-	getMarkets,
-	getMarketById,
-	addMarket,
-	editMarket,
-	deleteMarket,
-	getStallsByMarketId,
-	getProductsByMarketId,
-};
+  getMarkets,
+  getMarketById,
+  addMarket,
+  editMarket,
+  deleteMarket,
+  getStallsByMarketId,
+  getMarketByUserId,
+  getProductsByMarketId
+}
 function getStallsByMarketId(market_id) {
-	return db('stalls').where({ market_id });
+  return db('stalls').where({ market_id })
 }
 function getProductsByMarketId(market_id) {
-	return db('products').where({ market_id });
+  return db('products').where({ market_id })
 }
 function getMarkets() {
-	return db('markets');
+  return db('markets')
 }
 
 function getMarketById(id) {
-	return db('markets')
-		.where({ id })
-		.first();
+  return db('markets')
+    .where({ id })
+    .first()
+}
+
+function getMarketByUserId(id) {
+  return db('markets')
+    .where({ user_market: id })
+    .first()
 }
 
 function addMarket(market) {
-	return db('markets')
-		.insert(market)
-		.returning(['id', 'market_name']);
+  return db('markets')
+    .insert(market)
+    .returning(['id', 'market_name'])
 }
 
 function editMarket(id, data) {
-	return db('markets')
-		.where({ id })
-		.update({ ...data }, ['id']);
+  return db('markets')
+    .where({ id })
+    .update({ ...data }, ['id'])
 }
 function deleteMarket(id) {
-	return db('markets')
-		.where({ id })
-		.del();
+  return db('markets')
+    .where({ id })
+    .del()
 }

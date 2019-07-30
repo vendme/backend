@@ -20,7 +20,7 @@ exports.up = function(knex, Promise) {
 
     tbl.string('product_description', 500).notNullable()
 
-    tbl.decimal('product_price', [5, 2]).notNullable()
+    tbl.decimal('product_price', [7, 2]).notNullable()
 
     tbl.string('product_image', 2048)
 
