@@ -28,14 +28,15 @@ router.get('/type/:id', async (req, res) => {
   const { id } = req.params
   try {
     const market = await Markets.getMarketByUserId(id)
-    const vendor = await Vendor.getVendorByUserId(id)
+    const vendor = await Vendors.getVendorByUserId(id)
     market
-      ? res.status(200).json({ type: 'market', ...market })
+      ? res.status(200).json(market)
       : vendor
-      ? res.status(200).json({ type: 'vendor', ...vendor })
-      : res.status(404).json({ error: 'user is not found' })
+      ? res.status(200).json(vendor)
+      : res.status(404).json({ error: 'market or vendor is not found' })
   } catch (error) {
-    res.status(507).json({ error })
+    console.log(error)
+    res.status(500).json({ error })
   }
 })
 
@@ -52,12 +53,12 @@ router.post('/', async (req, res) => {
 })
 
 router.put('/:id', verifyToken, async (req, res) => {
+  const body = { ...req.body }
+  delete body.uid
   try {
     const { id } = await Users.findByUID(req.body.uid)
     if (req.params.id == id) {
-      const edited = await Users.editUser(id, {
-        profile_pic: req.body.profile_pic
-      })
+      const edited = await Users.editUser(id, body)
       res.status(200).json(edited)
     } else {
       res.status(500).json({
