@@ -5,11 +5,13 @@ const verifyToken = require('./restricted-middleware')
 // REGISTER ENDPOINT
 router.post('/register', (req, res) => {
   let user = req.body
-  Users.add(user)
+  Users.addUser(user)
     .then(saved => {
+      console.log(saved)
       res.status(201).json(saved)
     })
     .catch(error => {
+      console.log(error)
       res.status(500).json(error)
     })
 })
