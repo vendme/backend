@@ -23,7 +23,7 @@ function findBy(filter) {
 function addUser(user) {
   return db('users')
     .insert(user)
-    .returning(['id', 'username'])
+    .returning(['id'])
 }
 
 async function add(user) {
