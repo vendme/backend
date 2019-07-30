@@ -8,7 +8,6 @@ exports.seed = function(knex, Promise) {
       // return knex('stalls')
       return knex('stalls').insert([
         {
-          id: 1,
           stall_name: 'A1',
           market_id: 2,
           vendor_id: null,
@@ -22,7 +21,6 @@ exports.seed = function(knex, Promise) {
           rent_message: faker.random.boolean()
         },
         {
-          id: 2,
           stall_name: 'A1',
           market_id: 3,
           vendor_id: null,
@@ -36,7 +34,6 @@ exports.seed = function(knex, Promise) {
           rent_message: faker.random.boolean()
         },
         {
-          id: 3,
           stall_name: 'A1',
           market_id: 1,
           vendor_id: null,
