@@ -7,7 +7,8 @@ module.exports = {
   editVendor,
   deleteVendor,
   getStallsByVendorId,
-  getProductsByVendorId
+  getProductsByVendorId,
+  getVendorByUserId
 }
 
 function getVendors() {
@@ -22,6 +23,12 @@ function getVendorById(id) {
 
 function getVendorsByMarketId(id) {
   return db('vendors').where({ market_id: id })
+}
+
+function getVendorByUserId(id) {
+  return db('vendors')
+    .where({ user_vendor: id })
+    .first()
 }
 
 function addVendor(vendor) {

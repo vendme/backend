@@ -1,6 +1,8 @@
 const router = require('express').Router()
 const verifyToken = require('../../auth/restricted-middleware')
 const Users = require('../helpers/usersHelper')
+const Markets = require('../helpers/marketsHelper')
+const Vendors = require('../helpers/vendorsHelper')
 
 router.get('/', (req, res) => {
   Users.find()
@@ -16,6 +18,21 @@ router.get('/:id', async (req, res) => {
     const user = await Users.findById(id)
     user
       ? res.status(200).json(user)
+      : res.status(404).json({ error: 'user is not found' })
+  } catch (error) {
+    res.status(507).json({ error })
+  }
+})
+
+router.get('/type/:id', async (req, res) => {
+  const { id } = req.params
+  try {
+    const market = await Markets.getMarketByUserId(id)
+    const vendor = await Vendor.getVendorByUserId(id)
+    market
+      ? res.status(200).json({ type: 'market', ...market })
+      : vendor
+      ? res.status(200).json({ type: 'vendor', ...vendor })
       : res.status(404).json({ error: 'user is not found' })
   } catch (error) {
     res.status(507).json({ error })
