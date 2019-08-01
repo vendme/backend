@@ -82,7 +82,7 @@ router.get('/:id/stalls', async (req, res) => {
     const vendor = await Vendors.getStallsByVendorId(id)
     vendor
       ? res.status(200).json(vendor)
-      : res.status(404).json({ error: 'Stalls in this vnedor are not found' })
+      : res.status(404).json({ error: 'Stalls in this vendor are not found' })
   } catch (error) {
     res.status(500).json({ error })
   }
