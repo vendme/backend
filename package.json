@@ -14,7 +14,7 @@
 		"faker": "^4.1.0",
 		"firebase-admin": "^8.2.0",
 		"helmet": "^3.18.0",
-		"jsonwebtoken": "^8.5.1",
+		"jsonwebtoken": "^9.0.0",
 		"knex": "^0.17.6",
 		"knex-db-manager": "^0.5.0",
 		"knex-migrate": "^1.7.2",
